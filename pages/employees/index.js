@@ -7,7 +7,7 @@ const Employees = () => {
   return (
     <Page title="Employees">
       <button className="bg-[#DA0A10] hover:bg-[#f80810] text-white font-bold py-2 px-4 rounded mb-4 hover:text-white ">
-        <Link href="employees/create/employee-create">
+        <Link href="employees/create">
           <a className="text-white hover:text-white ">Create Employee</a>
         </Link>
       </button>
@@ -34,8 +34,8 @@ const Employees = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 w-1/2">
-                  {mockUserData.map((employee) => (
-                    <EmployeeTable userData={employee} />
+                  {mockUserData.map((employee, i) => (
+                    <EmployeeTable userData={employee} key={i} />
                   ))}
                 </tbody>
               </table>
