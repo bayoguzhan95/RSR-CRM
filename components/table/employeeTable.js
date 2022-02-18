@@ -7,19 +7,21 @@ const EmployeeTable = ({ userData, i }) => {
   const remove = (userData) => {
     confirmAlert({
       title: 'Silme Onayı', // Title dialog
-      message: `${userData?.name} adlı kişiyi silmek istediğinize emin misiniz ?`, // Message dialog
+
       childrenElement: () => (
-        <div style={{ margin: '18px 0' }}>{/* <Avatar src={profilePicturePath} name={visibleName} /> */}</div>
+        <div className='text-md '  >
+            <span className='!text-red-500' > {userData?.name}</span>  adlı kişiyi silmek ister misin ?
+        </div>
       ), // Custom UI or Component
       buttons: [
-        { label: 'Vazgeç', onClick: () => {}, className: 'button size-medium button-face-ghost' },
+        { label: 'Vazgeç', onClick: () => {}, className: '' },
         {
           label: 'Evet, Sil',
           onClick: () => {
             removeUser(userData.id);
           },
-          style: { color: 'red' },
-          className: 'button size-medium button-face-default',
+          
+          className: '!bg-[#ffd100] !text-black',
         },
       ],
     });
@@ -65,8 +67,8 @@ const EmployeeTable = ({ userData, i }) => {
 
         <span> I</span>
         <a
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={() => {
+   
             remove(userData);
           }}
           href='#'

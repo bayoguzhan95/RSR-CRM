@@ -133,9 +133,20 @@ export const sidebarItems = [
 ];
 
 export const userDepartment = [
-  { departman: '1. Departman', id: 1 },
-  { departman: '2. Departman', id: 2 },
-  { departman: '3. Departman', id: 3 },
+  { label: 'Management', value: 1 },
+  { label: 'Traffic', value: 2 },
+  { label: 'Merchandiser', value: 3 },
+  { label: 'Fit', value: 4 },
+  { label: 'Fit Assistant', value: 5 },
+  { label: 'Collection', value: 6 },
+  { label: 'Quality control', value: 7 },
+  { label: 'Qc Manager', value: 8 },
+  { label: 'Division Manager', value: 9 },
+];
+
+export const userStatus = [
+  { value: 1, label: 'Employee' },
+  { value: 2, label: 'Department Manager' },
 ];
 
 export const employeeAuths = [
@@ -205,5 +216,13 @@ export const employeeAuths = [
 export const mockUserData = [
   { id: 231231, name: 'oguzhan', surname: 'bay', email: 'test@gmail.com', status: 'deneme', role: 'Admin', department: 'Office' },
   { id: 112312, name: 'oguzhan', surname: 'bay', email: 'test@gmail.com', status: 'deneme', role: 'Admin', department: 'Office' },
-  { id: 1123123, name: 'oguzhan', surname: 'bay', email: 'test@gmail.com', status: 'deneme', role: 'Admin', department: 'Office' },
+  {
+    id: 1123123,
+    name: 'oguzhan',
+    surname: 'bay',
+    email: 'test@gmail.com',
+    status: 'deneme',
+    role: 'Admin',
+    department: 'Office',
+  },
 ];

@@ -1,11 +1,11 @@
 import { Col, Row } from 'react-grid-system';
 import FormItem from '../../../components/antdform/form-item/FormItem';
 import Input from '../../../components/antdform/input/input';
-import Card from '../../../components/card/card';
+import Card from '../../../components/antdform/card/card';
 import Page from '../../../components/Layout/Page';
 import React, { useState } from 'react';
 import Select from 'react-select';
-import { employeeAuths } from '../../../constant/constant';
+import { employeeAuths, userDepartment, userStatus } from '../../../constant/constant';
 import { useForm, Controller } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -57,14 +57,14 @@ const CreateEmployee = () => {
           <Row gutterWidth={16}>
             <Col lg={6}>
               <FormItem label='Ad' error={errors.name}>
-                <Input autocomplate='off' placeholder='Enter a name' id='name' name='name' type='text' {...register('name')} />
+                <Input autoComplete='off' placeholder='Enter a name' id='name' name='name' type='text' {...register('name')} />
               </FormItem>
             </Col>
 
             <Col lg={6}>
               <FormItem htmlFor='surname' label='Soyad' error={errors.surname}>
                 <Input
-                  autocomplate='off'
+                  autoComplete='off'
                   placeholder='Enter a surname'
                   id='surname'
                   name='surname'
@@ -77,7 +77,7 @@ const CreateEmployee = () => {
             <Col lg={6}>
               <FormItem label='Kullanıcı Adı' error={errors.username}>
                 <Input
-                  autocomplate='off'
+                  autoComplete='off'
                   placeholder='Enter a username'
                   id='username'
                   name='username'
@@ -87,9 +87,9 @@ const CreateEmployee = () => {
               </FormItem>
             </Col>
             <Col lg={6}>
-              <FormItem label='Şifre' error={errors.password}>
+              <FormItem label='Şifre' error={errors?.password}>
                 <Input
-                  autocomplate='off'
+                  autoComplete='new-password'
                   placeholder='Enter a password'
                   id='password'
                   name='password'
@@ -101,7 +101,7 @@ const CreateEmployee = () => {
             <Col lg={6}>
               <FormItem label='Telefon'>
                 <Input
-                  autocomplate='off'
+                  autoComplete='off'
                   placeholder='Enter a phone number'
                   id='phone'
                   name='phone'
@@ -112,16 +112,16 @@ const CreateEmployee = () => {
             </Col>
             <Col lg={6}>
               <FormItem label='Mail' error={errors.mail}>
-                <Input autocomplate='off' placeholder='Enter a mail' id='mail' name='mail' type='text' {...register('mail')} />
+                <Input autoComplete='off' placeholder='Enter a mail' id='mail' name='mail' type='text' {...register('mail')} />
               </FormItem>
             </Col>
 
             <Col lg={6}>
-              <FormItem label='Department' error={errors?.departman?.value}>
+              <FormItem label='Department' error={errors?.department?.value}>
                 <Controller
                   name='department'
                   control={control}
-                  render={({ field }) => <Select instanceId='departmanId' {...field} options={options} />}
+                  render={({ field }) => <Select instanceId='departmanId' {...field} options={userDepartment} />}
                 />
               </FormItem>
             </Col>
@@ -131,7 +131,7 @@ const CreateEmployee = () => {
                 <Controller
                   name='status'
                   control={control}
-                  render={({ field }) => <Select instanceId='statusId' {...field} options={options} />}
+                  render={({ field }) => <Select instanceId='statusId' {...field} options={userStatus} />}
                 />
               </FormItem>
             </Col>

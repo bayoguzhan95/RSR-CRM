@@ -420,3 +420,13 @@ body .button .button-icon + .button-child {
   transition-duration: .3s;
 }
 
+/*Confirm Alert Css*/
+.react-confirm-alert-body{
+  width: fit-content !important;
+}
+.react-confirm-alert-body > h1{
+  font-size: 19px;
+  font-weight: 600;
+  margin-top: -10px;
+
+}
