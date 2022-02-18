@@ -226,3 +226,44 @@ export const mockUserData = [
     department: 'Office',
   },
 ];
+
+export const paymentTerm = [
+  { label: 'BANK DRAFT 60 DAYS', value: 1 },
+  { label: 'BANK DRAFt 90 DAYS', value: 2 },
+  { label: 'CAD', value: 3 },
+  { label: 'CAG AT 30 DAYS', value: 4 },
+  { label: 'CAG AT 45 DAYS', value: 5 },
+  { label: 'CAG AT 90 DAYS', value: 6 },
+  { label: 'COD', value: 7 },
+  { label: 'DA 30 DAYS', value: 8 },
+  { label: 'LC 45 DAYS', value: 9 },
+  { label: 'LC AT 60  ', value: 10 },
+  { label: 'LC AT 90 DAYS', value: 11 },
+  { label: 'LC AT SIGHT', value: 12 },
+];
+
+export const currency = [
+  { label: 'TL', value: 1 },
+  { label: '€', value: 2 },
+  { label: '$', value: 3 },
+  { label: '£', value: 4 },
+];
+
+export const shipment = [
+  { label: 'SHIPMENT', value: 1 },
+  { label: 'AIR', value: 2 },
+  { label: 'DHL', value: 3 },
+  { label: 'TNT', value: 4 },
+  { label: 'TRUCK', value: 5 },
+  { label: 'UPS', value: 6 },
+  { label: 'VESSEl', value: 7 },
+  { label: 'YURTİÇİ KARGO', value: 8 },
+];
+
+export const certificate = [
+  { label: 'GOTS', value: 1 },
+  { label: 'OCS', value: 2 },
+  { label: 'RCS', value: 3 },
+  { label: 'GRS', value: 4 },
+  { label: 'BCI', value: 5 },
+];

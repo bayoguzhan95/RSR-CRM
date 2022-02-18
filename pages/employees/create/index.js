@@ -50,7 +50,7 @@ const CreateEmployee = () => {
     <Page title={'Create User'}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card>
-          <fieldset className='mb-6'>
+          <fieldset className='mb-6 text-lg font-bold'>
             <legend>Create User</legend>
           </fieldset>
 
@@ -160,7 +160,7 @@ const CreateEmployee = () => {
         </Card>
 
         <Card>
-          <fieldset className='mb-6'>
+        <fieldset className='mb-6 text-lg font-bold'>
             <legend>Authorization</legend>
           </fieldset>
 
