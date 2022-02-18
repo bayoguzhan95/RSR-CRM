@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import { employeeAuths } from '../../../constant/constant';
 import { useForm, Controller } from 'react-hook-form';
-
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -24,13 +23,13 @@ const CreateEmployee = () => {
     username: Yup.string().required(),
     password: Yup.string().max(255).min(6).required(),
     mail: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-    departman: Yup.object().shape({
+    department: Yup.object().shape({
       label: Yup.string().required(),
-      value: Yup.string().required(),
+      value: Yup.string().required('departman is required field'),
     }),
     status: Yup.object().shape({
       label: Yup.string().required(),
-      value: Yup.string().required(),
+      value: Yup.string().required('status is required field'),
     }),
   });
 
@@ -42,22 +41,23 @@ const CreateEmployee = () => {
     formState: { errors },
     control,
   } = useForm({ resolver: yupResolver(schema) });
+
   const onSubmit = (data) => {
     console.log(data);
   };
 
   return (
-    <Page title={'CreateEmployee'}>
+    <Page title={'Create User'}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card>
           <fieldset className='mb-6'>
-            <legend>Kullanıcı Oluştur</legend>
+            <legend>Create User</legend>
           </fieldset>
 
           <Row gutterWidth={16}>
             <Col lg={6}>
               <FormItem label='Ad' error={errors.name}>
-                <Input autocomplate='off' placeholder='Ad girin' id='name' name='name' type='text' {...register('name')} />
+                <Input autocomplate='off' placeholder='Enter a name' id='name' name='name' type='text' {...register('name')} />
               </FormItem>
             </Col>
 
@@ -65,7 +65,7 @@ const CreateEmployee = () => {
               <FormItem htmlFor='surname' label='Soyad' error={errors.surname}>
                 <Input
                   autocomplate='off'
-                  placeholder='Soyad girin'
+                  placeholder='Enter a surname'
                   id='surname'
                   name='surname'
                   type='text'
@@ -78,7 +78,7 @@ const CreateEmployee = () => {
               <FormItem label='Kullanıcı Adı' error={errors.username}>
                 <Input
                   autocomplate='off'
-                  placeholder='Kullanıcı adı girin'
+                  placeholder='Enter a username'
                   id='username'
                   name='username'
                   type='text'
@@ -90,10 +90,10 @@ const CreateEmployee = () => {
               <FormItem label='Şifre' error={errors.password}>
                 <Input
                   autocomplate='off'
-                  placeholder='Şifre girin'
+                  placeholder='Enter a password'
                   id='password'
                   name='password'
-                  type='text'
+                  type='password'
                   {...register('password')}
                 />
               </FormItem>
@@ -102,7 +102,7 @@ const CreateEmployee = () => {
               <FormItem label='Telefon'>
                 <Input
                   autocomplate='off'
-                  placeholder='Telefon numarası girin'
+                  placeholder='Enter a phone number'
                   id='phone'
                   name='phone'
                   type='text'
@@ -112,39 +112,47 @@ const CreateEmployee = () => {
             </Col>
             <Col lg={6}>
               <FormItem label='Mail' error={errors.mail}>
-                <Input autocomplate='off' placeholder='Mail  girin' id='mail' name='mail' type='text' {...register('mail')} />
+                <Input autocomplate='off' placeholder='Enter a mail' id='mail' name='mail' type='text' {...register('mail')} />
               </FormItem>
             </Col>
 
             <Col lg={6}>
-              <FormItem label='Departman' error={errors?.departman?.value}>
-                <Controller name='departman' control={control} render={({ field }) => <Select {...field} options={options} />} />
+              <FormItem label='Department' error={errors?.departman?.value}>
+                <Controller
+                  name='department'
+                  control={control}
+                  render={({ field }) => <Select instanceId='departmanId' {...field} options={options} />}
+                />
               </FormItem>
             </Col>
 
             <Col lg={6}>
               <FormItem label='Status' error={errors?.status?.value}>
-                <Controller name='status' control={control} render={({ field }) => <Select {...field} options={options} />} />
+                <Controller
+                  name='status'
+                  control={control}
+                  render={({ field }) => <Select instanceId='statusId' {...field} options={options} />}
+                />
               </FormItem>
             </Col>
             {/* Connected Customer */}
             <Col lg={12}>
-              <p className='font-extrabold text-sm mb-1'> Takip ettiği</p>
+              <p className='font-extrabold text-sm mb-1'> Followed by</p>
               <Row>
                 <Col lg={2}>
-                  <Select defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
+                  <Select instanceId='u1' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
                 </Col>
                 <Col lg={2}>
-                  <Select defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
+                  <Select instanceId='u2' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
                 </Col>
                 <Col lg={2}>
-                  <Select defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
+                  <Select instanceId='u3' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
                 </Col>
                 <Col lg={2}>
-                  <Select defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
+                  <Select instanceId='u4' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
                 </Col>
                 <Col lg={2}>
-                  <Select defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
+                  <Select instanceId='u5' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
                 </Col>
               </Row>
             </Col>
@@ -153,7 +161,7 @@ const CreateEmployee = () => {
 
         <Card>
           <fieldset className='mb-6'>
-            <legend>Yetki Mekanizması</legend>
+            <legend>Authorization</legend>
           </fieldset>
 
           {employeeAuths.map((item, i) => (
@@ -177,7 +185,7 @@ const CreateEmployee = () => {
           ))}
         </Card>
         <button className='bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'>
-          Kaydet
+          Save
         </button>
       </form>
     </Page>
