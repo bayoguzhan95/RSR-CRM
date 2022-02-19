@@ -267,3 +267,35 @@ export const certificate = [
   { label: 'GRS', value: 4 },
   { label: 'BCI', value: 5 },
 ];
+
+export const clients = [
+  { label: 'GOTS', value: 1 },
+  { label: 'OCS', value: 2 },
+  { label: 'RCS', value: 3 },
+  { label: 'GRS', value: 4 },
+  { label: 'BCI', value: 5 },
+];
+
+export const seasons = [
+  { label: 'GOTS', value: 1 },
+  { label: 'OCS', value: 2 },
+  { label: 'RCS', value: 3 },
+  { label: 'GRS', value: 4 },
+  { label: 'BCI', value: 5 },
+];
+
+export const departments = [
+  { label: 'GOTS', value: 1 },
+  { label: 'OCS', value: 2 },
+  { label: 'RCS', value: 3 },
+  { label: 'GRS', value: 4 },
+  { label: 'BCI', value: 5 },
+];
+
+export const fabriccode = [
+  { label: 'GOTS', value: 1 },
+  { label: 'OCS', value: 2 },
+  { label: 'RCS', value: 3 },
+  { label: 'GRS', value: 4 },
+  { label: 'BCI', value: 5 },
+];

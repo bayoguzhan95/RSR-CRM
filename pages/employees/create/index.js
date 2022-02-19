@@ -56,13 +56,13 @@ const CreateEmployee = () => {
 
           <Row gutterWidth={16}>
             <Col lg={6}>
-              <FormItem label='Ad' error={errors.name}>
+              <FormItem label='Name' error={errors.name}>
                 <Input autoComplete='off' placeholder='Enter a name' id='name' name='name' type='text' {...register('name')} />
               </FormItem>
             </Col>
 
             <Col lg={6}>
-              <FormItem htmlFor='surname' label='Soyad' error={errors.surname}>
+              <FormItem htmlFor='surname' label='Surname' error={errors.surname}>
                 <Input
                   autoComplete='off'
                   placeholder='Enter a surname'
@@ -75,7 +75,7 @@ const CreateEmployee = () => {
             </Col>
 
             <Col lg={6}>
-              <FormItem label='Kullanıcı Adı' error={errors.username}>
+              <FormItem label='Username' error={errors.username}>
                 <Input
                   autoComplete='off'
                   placeholder='Enter a username'
@@ -87,7 +87,7 @@ const CreateEmployee = () => {
               </FormItem>
             </Col>
             <Col lg={6}>
-              <FormItem label='Şifre' error={errors?.password}>
+              <FormItem label='Password' error={errors?.password}>
                 <Input
                   autoComplete='new-password'
                   placeholder='Enter a password'
@@ -99,7 +99,7 @@ const CreateEmployee = () => {
               </FormItem>
             </Col>
             <Col lg={6}>
-              <FormItem label='Telefon'>
+              <FormItem label='Phone'>
                 <Input
                   autoComplete='off'
                   placeholder='Enter a phone number'

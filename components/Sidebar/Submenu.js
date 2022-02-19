@@ -15,12 +15,12 @@ const SubMenu = ({ item, setActiveLink, activeLink }) => {
     <>
       <a
         onClick={handleClick}
-        className={`flex justify-between items-center menuItem  text-sm cursor-pointer border-t border-[#f4f4f4] text-black hover:text-black `}
+        className={`flex justify-between items-center menuItem  text-sm cursor-pointer border-t border-[#f4f4f4] text-black hover:text-black  font-medium`}
       >
-        <div className="flex items-center space-x-4 p-2">
+        <div className='flex items-center space-x-4 p-2'>
           <span> {item.title} </span>
         </div>
-        <div className="">
+        <div className=''>
           {subnav && <RiIcons.RiArrowUpSFill />}
           {!subnav && <RiIcons.RiArrowDownSFill />}
         </div>
