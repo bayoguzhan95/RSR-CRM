@@ -7,8 +7,7 @@ import React, { useState } from 'react';
 import Select from 'react-select';
 import { employeeAuths, userDepartment, userStatus } from '../../../constant/constant';
 import { useForm, Controller } from 'react-hook-form';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { Divider } from 'antd';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -17,21 +16,7 @@ const options = [
 ];
 
 const CreateEmployee = () => {
-  const schema = Yup.object().shape({
-    name: Yup.string().required(),
-    surname: Yup.string().required(),
-    username: Yup.string().required(),
-    password: Yup.string().max(255).min(6).required(),
-    mail: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-    department: Yup.object().shape({
-      label: Yup.string().required(),
-      value: Yup.string().required('departman is required field'),
-    }),
-    status: Yup.object().shape({
-      label: Yup.string().required(),
-      value: Yup.string().required('status is required field'),
-    }),
-  });
+ 
 
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -40,7 +25,8 @@ const CreateEmployee = () => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm({ resolver: yupResolver(schema) });
+    watch,
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
@@ -50,14 +36,11 @@ const CreateEmployee = () => {
     <Page title={'Create User'}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card>
-          <fieldset className='mb-6 text-lg font-bold'>
-            <legend>Create User</legend>
-          </fieldset>
-
+        <Divider orientation='center'>Create User</Divider>
           <Row gutterWidth={16}>
             <Col lg={6}>
               <FormItem label='Name' error={errors.name}>
-                <Input autoComplete='off' placeholder='Enter a name' id='name' name='name' type='text' {...register('name')} />
+                <Input autoComplete='off' placeholder='Enter a name' id='name' name='name' type='text' {...register('name', {required:'name is a required field'})} />
               </FormItem>
             </Col>
 
@@ -69,7 +52,7 @@ const CreateEmployee = () => {
                   id='surname'
                   name='surname'
                   type='text'
-                  {...register('surname')}
+                  {...register('surname', {required:'surname is a required field'})}
                 />
               </FormItem>
             </Col>
@@ -82,7 +65,7 @@ const CreateEmployee = () => {
                   id='username'
                   name='username'
                   type='text'
-                  {...register('username')}
+                  {...register('username', {required:'username is a required field'})}
                 />
               </FormItem>
             </Col>
@@ -94,7 +77,7 @@ const CreateEmployee = () => {
                   id='password'
                   name='password'
                   type='password'
-                  {...register('password')}
+                  {...register('password', {required:'password is a required field'})}
                 />
               </FormItem>
             </Col>
@@ -106,32 +89,34 @@ const CreateEmployee = () => {
                   id='phone'
                   name='phone'
                   type='text'
-                  {...register('phone')}
+                  {...register('phone', {required:'phone is a required field'})}
                 />
               </FormItem>
             </Col>
             <Col lg={6}>
               <FormItem label='Mail' error={errors.mail}>
-                <Input autoComplete='off' placeholder='Enter a mail' id='mail' name='mail' type='text' {...register('mail')} />
+                <Input autoComplete='off' placeholder='Enter a mail' id='mail' name='mail' type='text' {...register('mail', {required:'mail is a required field'})}/>
               </FormItem>
             </Col>
 
             <Col lg={6}>
-              <FormItem label='Department' error={errors?.department?.value}>
+              <FormItem label='Department' error={errors?.department}>
                 <Controller
                   name='department'
                   control={control}
                   render={({ field }) => <Select instanceId='departmanId' {...field} options={userDepartment} />}
+                  {...register('department', { required: ' required field' })}
                 />
               </FormItem>
             </Col>
 
             <Col lg={6}>
-              <FormItem label='Status' error={errors?.status?.value}>
+              <FormItem label='Status' error={errors?.status}>
                 <Controller
                   name='status'
                   control={control}
                   render={({ field }) => <Select instanceId='statusId' {...field} options={userStatus} />}
+                  {...register('status', { required: ' required field' })}
                 />
               </FormItem>
             </Col>
@@ -160,9 +145,7 @@ const CreateEmployee = () => {
         </Card>
 
         <Card>
-        <fieldset className='mb-6 text-lg font-bold'>
-            <legend>Authorization</legend>
-          </fieldset>
+        <Divider orientation='center'>Authorization</Divider>
 
           {employeeAuths.map((item, i) => (
             <div className='' key={i} {...register(item.menuItem)}>
