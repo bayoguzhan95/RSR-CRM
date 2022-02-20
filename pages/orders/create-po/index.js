@@ -7,7 +7,7 @@ import Input from '../../../components/antdform/input/input';
 import FormItem from '../../../components/antdform/form-item/FormItem';
 import { clients, composition, currency, departments, fabriccode, paymentTerm, seasons } from '../../../constant/constant';
 
-export default function createPo() {
+export default function CreatePo() {
   const {
     register,
     handleSubmit,

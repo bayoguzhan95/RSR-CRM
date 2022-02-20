@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../../components/Layout/Page'
 
-const createProforma = () => {
+const CreateProforma = () => {
   return (
     <Page title={"Create Proforma"} >
     Create Proforma
@@ -9,4 +9,4 @@ const createProforma = () => {
   )
 }
 
-export default createProforma
+export default CreateProforma

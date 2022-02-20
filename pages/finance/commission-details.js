@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../../components/Layout/Page'
 
-const commissionDetails = () => {
+const CommissionDetails = () => {
   return (
     <Page title={"Commission Details"} >
     Commission Details
@@ -9,4 +9,4 @@ const commissionDetails = () => {
   )
 }
 
-export default commissionDetails
+export default CommissionDetails

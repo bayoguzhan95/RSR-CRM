@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../../components/Layout/Page'
 
-const monthlyInv = () => {
+const MonthlyInv = () => {
   return (
     <Page title={"Monthly Inv"} >
     Monthly Inv
@@ -9,4 +9,4 @@ const monthlyInv = () => {
   )
 }
 
-export default monthlyInv
+export default MonthlyInv

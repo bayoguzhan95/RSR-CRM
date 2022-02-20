@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../../components/Layout/Page'
 
-const shippedOrders = () => {
+const ShippedOrders = () => {
   return (
     <Page title={"Shipped Orders"} >
     Shipped Orders
@@ -9,4 +9,4 @@ const shippedOrders = () => {
   )
 }
 
-export default shippedOrders
+export default ShippedOrders

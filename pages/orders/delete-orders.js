@@ -1,12 +1,12 @@
 import React from 'react'
 import Page from '../../components/Layout/Page'
 
-const deleteOrders = () => {
+const DeleteOrders = () => {
   return (
     <Page title={"Delete Orders"} >
-    Delete Orders
+    Delete Ordersss
   </Page>
   )
 }
 
-export default deleteOrders
+export default DeleteOrders

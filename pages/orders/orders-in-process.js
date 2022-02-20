@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../../components/Layout/Page'
 
-const orders = () => {
+const OrdersInProcess = () => {
   return (
     <Page title={"Orders-In-Process"} >
       Test
@@ -9,4 +9,4 @@ const orders = () => {
   )
 }
 
-export default orders
+export default OrdersInProcess

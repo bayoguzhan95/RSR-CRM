@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../../components/Layout/Page'
 
-const bankAccount = () => {
+const BankAccount = () => {
   return (
     <Page title={"Bank Account"} >
     Bank Account
@@ -9,4 +9,4 @@ const bankAccount = () => {
   )
 }
 
-export default bankAccount
+export default BankAccount

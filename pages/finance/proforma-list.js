@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../../components/Layout/Page'
 
-const proformaList = () => {
+const ProformaList = () => {
   return (
     <Page title={"Proforma List"} >
     Proforma List
@@ -9,4 +9,4 @@ const proformaList = () => {
   )
 }
 
-export default proformaList
+export default ProformaList

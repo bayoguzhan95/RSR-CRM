@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../../components/Layout/Page'
 
-const generalLook = () => {
+const GeneralLook = () => {
   return (
     <Page title={"General Look"} >
     General look
@@ -9,4 +9,4 @@ const generalLook = () => {
   )
 }
 
-export default generalLook
+export default GeneralLook
