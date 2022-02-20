@@ -6,6 +6,7 @@ import Card from '../../../components/antdform/card/card';
 import Input from '../../../components/antdform/input/input';
 import FormItem from '../../../components/antdform/form-item/FormItem';
 import { clients, composition, currency, departments, fabriccode, paymentTerm, seasons } from '../../../constant/constant';
+import { DatePicker, Space } from 'antd';
 
 export default function CreatePo() {
   const {
@@ -27,7 +28,7 @@ export default function CreatePo() {
     <Page title={'Create User'}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card>
-          <fieldset className='mb-6 text-lg font-bold'>
+          <fieldset className='mb-6 text-md font-bold'>
             <legend>Create PO</legend>
           </fieldset>
 
@@ -185,9 +186,8 @@ export default function CreatePo() {
                 />
               </FormItem>
             </Col>
-            <Col lg={2}></Col>
 
-            <Col lg={6}>
+            <Col lg={4}>
               <FormItem label='Payment Term' error={errors?.paymentTerm}>
                 <Controller
                   name='paymentTerm'
@@ -195,6 +195,123 @@ export default function CreatePo() {
                   render={({ field }) => <Select instanceId='paymentTerm' {...field} options={paymentTerm} />}
                   {...register('paymentTerm', { required: 'Payment Term is a required field' })}
                 />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label='Certificate ' error={errors?.certificate}>
+                <Controller
+                  name='certificate'
+                  control={control}
+                  render={({ field }) => <Select instanceId='certificate' {...field} options={currency} />}
+                  {...register('certificate', { required: ' required field' })}
+                />
+              </FormItem>
+            </Col>
+          </Row>
+        </Card>
+        <Card>
+          <fieldset className='mb-6 text-md font-bold'>
+            <legend>Assignment for Division</legend>
+          </fieldset>
+
+          <Row gutterWidth={16}>
+            <Col lg={3}>
+              <FormItem label='Division Manager ' error={errors?.divisionmanager}>
+                <Controller
+                  name='divisionmanager'
+                  control={control}
+                  render={({ field }) => <Select instanceId='divisionmanager' {...field} options={currency} />}
+                  {...register('divisionmanager', { required: ' required field' })}
+                />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label='Merchandiser ' error={errors?.merchandiser}>
+                <Controller
+                  name='merchandiser'
+                  control={control}
+                  render={({ field }) => <Select instanceId='merchandiser' {...field} options={currency} />}
+                  {...register('merchandiser', { required: ' required field' })}
+                />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label='QC Manager ' error={errors?.qcmanager}>
+                <Controller
+                  name='qcmanager'
+                  control={control}
+                  render={({ field }) => <Select instanceId='qcmanager' {...field} options={currency} />}
+                  {...register('qcmanager', { required: ' required field' })}
+                />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label='QC ' error={errors?.qc}>
+                <Controller
+                  name='qc'
+                  control={control}
+                  render={({ field }) => <Select instanceId='qc' {...field} options={currency} />}
+                  {...register('qc', { required: ' required field' })}
+                />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label='Fit ' error={errors?.fit}>
+                <Controller
+                  name='fit'
+                  control={control}
+                  render={({ field }) => <Select instanceId='fit' {...field} options={currency} />}
+                  {...register('fit', { required: ' required field' })}
+                />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label='Accounting + Traffic ' error={errors?.accountingwithtraffic}>
+                <Controller
+                  name='accountingwithtraffic'
+                  control={control}
+                  render={({ field }) => <Select instanceId='accountingwithtraffic' {...field} options={currency} />}
+                  {...register('accountingwithtraffic', { required: ' required field' })}
+                />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label='Fit Assistant ' error={errors?.fitassistant}>
+                <Controller
+                  name='fitassistant'
+                  control={control}
+                  render={({ field }) => <Select instanceId='fitassistant' {...field} options={currency} />}
+                  {...register('fitassistant', { required: ' required field' })}
+                />
+              </FormItem>
+            </Col>
+          </Row>
+        </Card>
+
+        <Card>
+          <fieldset className='mb-6 text-md font-bold'>
+            <legend>DATES</legend>
+          </fieldset>
+
+          <Row gutterWidth={16}>
+            <Col lg={3}>
+              <FormItem label='Entry Date ' error={errors?.entrydate}>
+                <DatePicker />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label='Approval Date ' error={errors?.approvaldate}>
+                <DatePicker />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label='Supplier Shipment Date ' error={errors?.suppliershipmentdate}>
+                <DatePicker />
+              </FormItem>
+            </Col>
+            <Col lg={3}>
+              <FormItem label=' Shipment Date ' error={errors?.shipmentdate}>
+                <DatePicker />
               </FormItem>
             </Col>
           </Row>
