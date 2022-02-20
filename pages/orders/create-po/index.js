@@ -25,9 +25,7 @@ export default function CreatePo() {
     console.log(data);
   };
 
-  function callback(key) {
-    console.log(key);
-  }
+
   const watchClientSelection = watch('clients');
   const watchSeasonsSelection = watch('seasons');
   const watchDepartmentSelection = watch('departments');
@@ -37,7 +35,6 @@ export default function CreatePo() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card>
           <Divider orientation='center'>Create PO</Divider>
-
           <Row gutterWidth={16}>
             <Col lg={6}>
               <FormItem label='PO' error={errors?.po}>
@@ -216,7 +213,7 @@ export default function CreatePo() {
           </Row>
         </Card>
 
-        <Tabs defaultActiveKey='1' onChange={callback}>
+        <Tabs defaultActiveKey='1' >
           <TabPane tab='Assignment for Division' key='1'>
             <Card>
               <Row gutterWidth={16}>
@@ -298,23 +295,43 @@ export default function CreatePo() {
               <Row gutterWidth={16}>
                 <Col lg={2}>
                   <FormItem label='Entry Date ' error={errors?.entrydate}>
-                    <DatePicker />
+                    <Controller
+                      name='entrydate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('entrydate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label='Approval Date ' error={errors?.approvaldate}>
-                    <DatePicker />
+                    <Controller
+                      name='approvaldate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('approvaldate')}
+                    />
                   </FormItem>
                 </Col>
 
                 <Col lg={2}>
-                  <FormItem label='Supplier Shipment Date ' error={errors?.suppliershipmentdate}>
-                    <DatePicker />
+                  <FormItem label='Sup Ship Date ' error={errors?.suppliershipmentdate}>
+                    <Controller
+                      name='supshipdate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('supshipdate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label=' Shipment Date ' error={errors?.shipmentdate}>
-                    <DatePicker />
+                    <Controller
+                      name='shipmentdate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('shipmentdate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={12}>
@@ -323,54 +340,104 @@ export default function CreatePo() {
 
                 <Col lg={2}>
                   <FormItem label=' Fabric '>
-                    <DatePicker />
+                    <Controller
+                      name='fabricdate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('fabricdate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label=' Color '>
-                    <DatePicker />
+                    <Controller
+                      name='colordate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('colordate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label=' Fit '>
-                    <DatePicker />
+                    <Controller
+                      name='fitdate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('fitdate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label=' Internal Test '>
-                    <DatePicker />
+                    <Controller
+                      name='internaltestdate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('internaltestdate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label=' International Test '>
-                    <DatePicker />
+                    <Controller
+                      name='internationaltestdate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('internationaltestdate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={1}></Col>
                 <Col lg={1}></Col>
                 <Col lg={2}>
                   <FormItem label=' Printing '>
-                    <DatePicker />
+                    <Controller
+                      name='printingdate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('printingdate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label=' Size Set '>
-                    <DatePicker />
+                    <Controller
+                      name='sizesetdate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('sizesetdate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label=' Pre Pro '>
-                    <DatePicker />
+                    <Controller
+                      name='preprodate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('preprodate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label=' Washing '>
-                    <DatePicker />
+                    <Controller
+                      name='washingdate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('washingdate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={2}>
                   <FormItem label=' Accessory '>
-                    <DatePicker />
+                    <Controller
+                      name='accessorydate'
+                      control={control}
+                      render={({ field }) => <DatePicker {...field} />}
+                      {...register('accessorydate')}
+                    />
                   </FormItem>
                 </Col>
                 <Col lg={1}></Col>
