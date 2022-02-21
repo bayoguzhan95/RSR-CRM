@@ -16,8 +16,6 @@ const options = [
 ];
 
 const CreateEmployee = () => {
- 
-
   const [selectedOption, setSelectedOption] = useState('');
 
   const {
@@ -36,11 +34,11 @@ const CreateEmployee = () => {
     <Page title={'Create User'}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Card>
-        <Divider orientation='center'>Create User</Divider>
+          <Divider orientation='center'>Create User</Divider>
           <Row gutterWidth={16}>
             <Col lg={6}>
               <FormItem label='Name' error={errors.name}>
-                <Input autoComplete='off' placeholder='Enter a name' id='name' name='name' type='text' {...register('name', {required:'name is a required field'})} />
+                <Input autoComplete='off' placeholder='Enter a name' id='name' name='name' type='text' {...register('name')} />
               </FormItem>
             </Col>
 
@@ -52,7 +50,7 @@ const CreateEmployee = () => {
                   id='surname'
                   name='surname'
                   type='text'
-                  {...register('surname', {required:'surname is a required field'})}
+                  {...register('surname')}
                 />
               </FormItem>
             </Col>
@@ -65,7 +63,7 @@ const CreateEmployee = () => {
                   id='username'
                   name='username'
                   type='text'
-                  {...register('username', {required:'username is a required field'})}
+                  {...register('username')}
                 />
               </FormItem>
             </Col>
@@ -77,7 +75,7 @@ const CreateEmployee = () => {
                   id='password'
                   name='password'
                   type='password'
-                  {...register('password', {required:'password is a required field'})}
+                  {...register('password')}
                 />
               </FormItem>
             </Col>
@@ -89,13 +87,13 @@ const CreateEmployee = () => {
                   id='phone'
                   name='phone'
                   type='text'
-                  {...register('phone', {required:'phone is a required field'})}
+                  {...register('phone')}
                 />
               </FormItem>
             </Col>
             <Col lg={6}>
               <FormItem label='Mail' error={errors.mail}>
-                <Input autoComplete='off' placeholder='Enter a mail' id='mail' name='mail' type='text' {...register('mail', {required:'mail is a required field'})}/>
+                <Input autoComplete='off' placeholder='Enter a mail' id='mail' name='mail' type='text' {...register('mail')} />
               </FormItem>
             </Col>
 
@@ -105,7 +103,7 @@ const CreateEmployee = () => {
                   name='department'
                   control={control}
                   render={({ field }) => <Select instanceId='departmanId' {...field} options={userDepartment} />}
-                  {...register('department', { required: ' required field' })}
+                  {...register('department')}
                 />
               </FormItem>
             </Col>
@@ -116,7 +114,7 @@ const CreateEmployee = () => {
                   name='status'
                   control={control}
                   render={({ field }) => <Select instanceId='statusId' {...field} options={userStatus} />}
-                  {...register('status', { required: ' required field' })}
+                  {...register('status')}
                 />
               </FormItem>
             </Col>
@@ -145,25 +143,38 @@ const CreateEmployee = () => {
         </Card>
 
         <Card>
-        <Divider orientation='center'>Authorization</Divider>
+          <Divider orientation='center'>Authorization</Divider>
 
           {employeeAuths.map((item, i) => (
-            <div className='' key={i} {...register(item.menuItem)}>
+            <div className='' key={i}>
               <h1 className='my-4'> {item.menuItem} </h1>
-              <div className=''>
-                {item.subMenu.map((res, i) => (
-                  <label key={i} className=' flex items-center flex-wrap cursor-pointer  '>
-                    <input
-                      className=' text-indigo-500 w-4 h-4 mr-2 focus:ring-indigo-400 focus:ring-opacity-25 border border-gray-300 rounded'
-                      name='page'
-                      type='checkbox'
-                      value={res.value}
-                      {...register(item.menuItemToHookForm)}
-                    />
-                    <span>{res.item} </span>
-                  </label>
-                ))}
-              </div>
+              {item.subMenu.map((res, i) => (
+                <Row key={i}>
+                  <Col xs={3}>
+                    <label key={i} className=' cursor-pointer  '>
+                      <input
+                        className=' text-indigo-500 w-4 h-4 mr-2 focus:ring-indigo-400 focus:ring-opacity-25 border border-gray-300 rounded'
+                        name='page'
+                        type='checkbox'
+                        value={res.value}
+                        {...register(`${item.menuItemToHookForm}[${i}].${res.value}`)}
+                      />
+                      <span>{res.item} </span>
+                    </label>
+                  </Col>
+
+                  <Col xs={4}>
+                    <label className='cursor-pointer'>
+                      <input
+                        type='checkbox'
+                        className=' text-indigo-500 w-4 h-4 mr-2 focus:ring-indigo-400 focus:ring-opacity-25 border border-gray-300 rounded'
+                        {...register(`${item.menuItemToHookForm}.[${i}].pages`)}
+                      />
+                      <span>Tam Yetki</span>
+                    </label>
+                  </Col>
+                </Row>
+              ))}
             </div>
           ))}
         </Card>
