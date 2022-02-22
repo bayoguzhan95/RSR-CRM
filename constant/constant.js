@@ -1,7 +1,17 @@
+import { FaAtlassian, FaAmilia, FaUserTie, FaBuilding, FaPlaneDeparture, FaTruckMoving } from 'react-icons/fa';
+import { IoLogoUsd, IoDocumentTextSharp } from 'react-icons/io5';
+import { GiBoxUnpacking, GiCheckMark } from 'react-icons/gi';
+import { FcSettings } from 'react-icons/fc';
+import { AiFillAppstore } from 'react-icons/ai';
+import React from 'react';
+// ColorFul-Icon
+// import { FcShipped, FcDepartment, FcDocument, FcBusinessman } from "react-icons/fc";
+
 export const sidebarItems = [
   {
     id: 1,
     title: 'Orders',
+    icon: <AiFillAppstore size={17} className="text-gray-300" />,
 
     subNav: [
       {
@@ -29,6 +39,7 @@ export const sidebarItems = [
   {
     id: 2,
     title: 'Quote Sheet',
+    icon: <FaAtlassian size={17} className="text-gray-300" />,
     subNav: [
       {
         title: 'Create Quote Sheet',
@@ -51,6 +62,7 @@ export const sidebarItems = [
   {
     id: 3,
     title: 'Finance',
+    icon: <IoLogoUsd size={17} className="text-gray-300" />,
     subNav: [
       {
         title: 'General Look',
@@ -87,6 +99,8 @@ export const sidebarItems = [
   {
     id: 4,
     title: 'Proformas',
+    icon: <FaAmilia size={17} className="text-gray-300" />,
+
     subNav: [
       {
         title: 'Supplier Proforma',
@@ -97,6 +111,7 @@ export const sidebarItems = [
   {
     id: 5,
     title: 'Traffic',
+    icon: <FaTruckMoving size={17} className="text-gray-300" />,
     subNav: [
       {
         title: 'Create Packing',
@@ -121,12 +136,109 @@ export const sidebarItems = [
     ],
   },
   {
+    id: 6,
+    title: 'Companies',
+    icon: <FaBuilding size={17} className="text-gray-300" />,
+
+    subNav: [
+      {
+        title: 'Suppliers',
+        to: '/companies/suppliers',
+      },
+      {
+        title: 'Clients',
+        to: '/companies/clients',
+      },
+      {
+        title: 'Exporters',
+        to: '/companies/exporters',
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: 'Reports',
+    icon: <IoDocumentTextSharp size={17} className="text-gray-300" />,
+
+    subNav: [
+      {
+        title: 'Delivery Reports',
+        to: '/reports/delivery-reports',
+      },
+    ],
+  },
+  {
+    id: 8,
+    title: 'Packing',
+    icon: <GiBoxUnpacking size={17} className="text-gray-300" />,
+
+    subNav: [
+      {
+        title: 'Packing',
+        to: '/packing/packing',
+      },
+    ],
+  },
+  {
+    id: 9,
+    title: 'Quality',
+    icon: <GiCheckMark size={17} className="text-gray-300" />,
+
+    subNav: [
+      {
+        title: 'Quality',
+        to: '/quality/quality',
+      },
+    ],
+  },
+  {
     id: 10,
     title: 'Employees',
+    icon: <FaUserTie size={17} className="text-gray-300" />,
     subNav: [
       {
         title: 'Employees',
         to: '/employees',
+      },
+    ],
+  },
+  {
+    id: 11,
+    title: 'Settings',
+    icon: <FcSettings size={17} className="text-gray-300" />,
+
+    subNav: [
+      {
+        title: 'Descriptions',
+        to: '/settings/descriptions',
+      },
+      {
+        title: 'Box Settings',
+        to: '/settings/box-settings',
+      },
+      {
+        title: 'General Settings',
+        to: '/settings/general-settings',
+      },
+    ],
+  },
+  {
+    id: 12,
+    title: 'Shipment Plan',
+    icon: <FaPlaneDeparture size={17} className="text-gray-300" />,
+
+    subNav: [
+      {
+        title: 'Create Shipment Plan',
+        to: '/shipment-plan/create-shipment-plan',
+      },
+      {
+        title: 'Pending Shipment Plan ',
+        to: '/shipment-plan/pending-shipment-plan',
+      },
+      {
+        title: 'Final Shipment Plan',
+        to: '/shipment-plan/final-shipment-plan',
       },
     ],
   },

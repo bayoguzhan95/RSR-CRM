@@ -1,15 +1,13 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
 import SubMenu from './Submenu';
 import { sidebarItems } from '../../constant/constant';
 
-const Sidebar = ({path}) => {
+const Sidebar = ({ path }) => {
   const [activeLink, setActiveLink] = useState('');
-
-
 
   return (
     <>
