@@ -1,6 +1,6 @@
 import { mockUserData } from '../../constant/constant';
 import EmployeeTable from '../../components/table/employeeTable';
-import Page from '../../components/Layout/Page';
+import Page from '../../components/layout/Page';
 import Link from 'next/link';
 
 const Employees = () => {

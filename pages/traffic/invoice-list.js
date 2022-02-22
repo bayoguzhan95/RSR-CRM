@@ -1,4 +1,4 @@
-import Page from "../../components/Layout/Page"
+import Page from "../../components/layout/Page"
 
 const InvoiceList = () => {
     return (

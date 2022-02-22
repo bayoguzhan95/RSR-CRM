@@ -2,7 +2,7 @@ import { Col, Row } from 'react-grid-system';
 import FormItem from '../../../components/antdform/form-item/FormItem';
 import Input from '../../../components/antdform/input/input';
 import Card from '../../../components/antdform/card/card';
-import Page from '../../../components/Layout/Page';
+import Page from '../../../components/layout/Page';
 import React, { useState } from 'react';
 import Select from 'react-select';
 import { employeeAuths, userDepartment, userStatus } from '../../../constant/constant';

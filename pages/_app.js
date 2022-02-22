@@ -1,5 +1,5 @@
 import { ToastContainer } from 'react-toastify';
-import Layout from '../components/Layout/Layout';
+import Layout from '../components/layout/Layout';
 import '../styles/globals.css';
 import 'antd/dist/antd.css';
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css

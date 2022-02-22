@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import Sidebar from '../Sidebar/Sidebar';
+import Sidebar from '../sidebar/Sidebar';
 
 const Layout = ({ children }) => {
   const router = useRouter();

@@ -1,7 +1,7 @@
 import { Col, Row } from 'react-grid-system';
 import { useForm, Controller } from 'react-hook-form';
 import Select from 'react-select';
-import Page from '../../../components/Layout/Page';
+import Page from '../../../components/layout/Page';
 import Card from '../../../components/antdform/card/card';
 import Input from '../../../components/antdform/input/input';
 import FormItem from '../../../components/antdform/form-item/FormItem';
