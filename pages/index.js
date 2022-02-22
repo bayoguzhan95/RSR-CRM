@@ -5,7 +5,7 @@ import Page from '../components/Layout/Page';
 export default function Home() {
 
   return (
-    <Page title={'Login'}>
+    <Page >
      test
     </Page>
   );
