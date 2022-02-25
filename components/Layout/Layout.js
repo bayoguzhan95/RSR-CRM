@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       <div className='h-screen overflow-hidden '>
         <main className='flex'>
           {router?.pathname === '/login' ? '' : <Sidebar path={router.route} />}
-          <div className=' bg-[#fbfbfd]  flex-grow  h-screen overflow-y-scroll scrollbar-hide'>{children}</div>
+          <div className=' bg-[#fbfbfd]  flex-grow  h-screen overflow-y-scroll '>{children}</div>
         </main>
       </div>
     </>

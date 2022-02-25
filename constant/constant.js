@@ -11,7 +11,7 @@ export const sidebarItems = [
   {
     id: 1,
     title: 'Orders',
-    icon: <AiFillAppstore size={17} className="text-gray-300" />,
+    icon: <AiFillAppstore size={17} className='text-gray-300' />,
 
     subNav: [
       {
@@ -39,7 +39,7 @@ export const sidebarItems = [
   {
     id: 2,
     title: 'Quote Sheet',
-    icon: <FaAtlassian size={17} className="text-gray-300" />,
+    icon: <FaAtlassian size={17} className='text-gray-300' />,
     subNav: [
       {
         title: 'Create Quote Sheet',
@@ -62,7 +62,7 @@ export const sidebarItems = [
   {
     id: 3,
     title: 'Finance',
-    icon: <IoLogoUsd size={17} className="text-gray-300" />,
+    icon: <IoLogoUsd size={17} className='text-gray-300' />,
     subNav: [
       {
         title: 'General Look',
@@ -99,7 +99,7 @@ export const sidebarItems = [
   {
     id: 4,
     title: 'Proformas',
-    icon: <FaAmilia size={17} className="text-gray-300" />,
+    icon: <FaAmilia size={17} className='text-gray-300' />,
 
     subNav: [
       {
@@ -111,7 +111,7 @@ export const sidebarItems = [
   {
     id: 5,
     title: 'Traffic',
-    icon: <FaTruckMoving size={17} className="text-gray-300" />,
+    icon: <FaTruckMoving size={17} className='text-gray-300' />,
     subNav: [
       {
         title: 'Create Packing',
@@ -138,7 +138,7 @@ export const sidebarItems = [
   {
     id: 6,
     title: 'Companies',
-    icon: <FaBuilding size={17} className="text-gray-300" />,
+    icon: <FaBuilding size={17} className='text-gray-300' />,
 
     subNav: [
       {
@@ -158,7 +158,7 @@ export const sidebarItems = [
   {
     id: 7,
     title: 'Reports',
-    icon: <IoDocumentTextSharp size={17} className="text-gray-300" />,
+    icon: <IoDocumentTextSharp size={17} className='text-gray-300' />,
 
     subNav: [
       {
@@ -170,7 +170,7 @@ export const sidebarItems = [
   {
     id: 8,
     title: 'Packing',
-    icon: <GiBoxUnpacking size={17} className="text-gray-300" />,
+    icon: <GiBoxUnpacking size={17} className='text-gray-300' />,
 
     subNav: [
       {
@@ -182,7 +182,7 @@ export const sidebarItems = [
   {
     id: 9,
     title: 'Quality',
-    icon: <GiCheckMark size={17} className="text-gray-300" />,
+    icon: <GiCheckMark size={17} className='text-gray-300' />,
 
     subNav: [
       {
@@ -194,7 +194,7 @@ export const sidebarItems = [
   {
     id: 10,
     title: 'Employees',
-    icon: <FaUserTie size={17} className="text-gray-300" />,
+    icon: <FaUserTie size={17} className='text-gray-300' />,
     subNav: [
       {
         title: 'Employees',
@@ -205,7 +205,7 @@ export const sidebarItems = [
   {
     id: 11,
     title: 'Settings',
-    icon: <FcSettings size={17} className="text-gray-300" />,
+    icon: <FcSettings size={17} className='text-gray-300' />,
 
     subNav: [
       {
@@ -225,7 +225,7 @@ export const sidebarItems = [
   {
     id: 12,
     title: 'Shipment Plan',
-    icon: <FaPlaneDeparture size={17} className="text-gray-300" />,
+    icon: <FaPlaneDeparture size={17} className='text-gray-300' />,
 
     subNav: [
       {
@@ -318,10 +318,58 @@ export const employeeAuths = [
     ],
   },
   {
-    id: 5,
+    id: 6,
+    menuItemToHookForm: 'companies',
+    menuItem: 'Companies',
+    subMenu: [
+      { item: 'Suppliers', value: 'suppliers' },
+      { item: 'Clients', value: 'clients' },
+      { item: 'Exporters', value: 'exporters' },
+    ],
+  },
+  {
+    id: 7,
+    menuItemToHookForm: 'reports',
+    menuItem: 'Reports',
+    subMenu: [{ item: 'Delivery Reports', value: 'deliveryreports' }],
+  },
+  {
+    id: 8,
+    menuItemToHookForm: 'packing',
+    menuItem: 'Packing',
+    subMenu: [{ item: 'Packing', value: 'packing' }],
+  },
+  {
+    id: 9,
+    menuItemToHookForm: 'quality',
+    menuItem: 'Quality',
+    subMenu: [{ item: 'Quality', value: 'quality' }],
+  },
+  {
+    id: 10,
     menuItemToHookForm: 'employees',
     menuItem: 'Employees',
     subMenu: [{ item: 'Employees', value: 'employees' }],
+  },
+  {
+    id: 11,
+    menuItemToHookForm: 'settings',
+    menuItem: 'Settings',
+    subMenu: [
+      { item: 'Descriptions', value: 'descriptions' },
+      { item: 'Box Settings', value: 'boxsettings' },
+      { item: 'General Settings', value: 'generalsettings' },
+    ],
+  },
+  {
+    id: 12,
+    menuItemToHookForm: 'shipmentplan',
+    menuItem: 'Shipment Plan',
+    subMenu: [
+      { item: 'Create Shipment Plan', value: 'createshipmentplan' },
+      { item: 'Pending Shipment Plan', value: 'pendingshipmentplan' },
+      { item: 'Final Shipment Plan', value: 'finalshipmentplan' },
+    ],
   },
 ];
 

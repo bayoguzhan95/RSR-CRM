@@ -5,9 +5,24 @@ import Card from '../components/antdform/card/card';
 import FormItem from '../components/antdform/form-item/FormItem';
 import Input from '../components/antdform/input/Input';
 import { useForm } from 'react-hook-form';
+import { useContext, useEffect } from 'react';
+import axios from 'axios';
+import { Context } from '../context';
 const Login = () => {
   // router
   const router = useRouter();
+
+  // state
+  const {
+    state: { user },
+    dispatch,
+  } = useContext(Context);
+  // const { user } = state;
+
+
+  useEffect(() => {
+    if (user !== null) router.push('/');
+  }, [user]);
 
   const {
     register,
@@ -17,8 +32,23 @@ const Login = () => {
     watch,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (formData) => {
+    console.log(formData.email);
+    try {
+      const { data } = await axios.post(`/api/login`, {
+        email: formData.email,
+        password: formData.password,
+      });
+
+      dispatch({
+        type: 'LOGIN',
+        payload: data,
+      });
+
+      window.localStorage.setItem('user', JSON.stringify(data));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -31,14 +61,14 @@ const Login = () => {
           </Divider>
           <Row gutterWidth={16}>
             <Col lg={12}>
-              <FormItem label='Username' error={errors.username}>
+              <FormItem label='EMail' error={errors.email}>
                 <Input
                   autoComplete='off'
-                  placeholder='Enter a username'
-                  id='username'
-                  name='username'
+                  placeholder='Enter a email'
+                  id='email'
+                  name='email'
                   type='text'
-                  {...register('username', { required: 'Username cannot be left blank.' })}
+                  {...register('email', { required: 'EMail cannot be left blank.' })}
                 />
               </FormItem>
             </Col>

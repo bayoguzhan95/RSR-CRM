@@ -5,9 +5,11 @@ import Card from '../../../components/antdform/card/card';
 import Page from '../../../components/layout/Page';
 import React, { useState } from 'react';
 import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 import { employeeAuths, userDepartment, userStatus } from '../../../constant/constant';
 import { useForm, Controller } from 'react-hook-form';
 import { Divider } from 'antd';
+import axios from 'axios';
 
 const options = [
   { value: 'chocolate', label: 'Chocolate' },
@@ -15,6 +17,7 @@ const options = [
   { value: 'vanilla', label: 'Vanilla' },
 ];
 
+const animatedComponents = makeAnimated();
 const CreateEmployee = () => {
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -26,8 +29,57 @@ const CreateEmployee = () => {
     watch,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (formData) => {
+    console.log(formData);
+    const {
+      name,
+      surname,
+      username,
+      email,
+      password,
+      phone,
+      department,
+      status,
+      followedby,
+      followedbyfit,
+      orders,
+      quotesheet,
+      finance,
+      proformas,
+      traffic,
+      companies,
+      reports,
+      packing,
+      quality,
+      employees,
+      settings,
+      shipmentplan
+    } = formData;
+
+    const { data } = await axios.post(`/api/register`, {
+      name,
+      surname,
+      username,
+      email,
+      password,
+      phone,
+      department,
+      status,
+      followedby,
+      followedbyfit,
+      orders,
+      quotesheet,
+      finance,
+      proformas,
+      traffic,
+      companies,
+      reports,
+      packing,
+      quality,
+      employees,
+      settings,
+      shipmentplan
+    });
   };
 
   return (
@@ -92,8 +144,15 @@ const CreateEmployee = () => {
               </FormItem>
             </Col>
             <Col lg={6}>
-              <FormItem label='Mail' error={errors.mail}>
-                <Input autoComplete='off' placeholder='Enter a mail' id='mail' name='mail' type='text' {...register('mail')} />
+              <FormItem label='Email' error={errors.email}>
+                <Input
+                  autoComplete='off'
+                  placeholder='Enter a email'
+                  id='email'
+                  name='email'
+                  type='text'
+                  {...register('email')}
+                />
               </FormItem>
             </Col>
 
@@ -118,26 +177,45 @@ const CreateEmployee = () => {
                 />
               </FormItem>
             </Col>
-            {/* Connected Customer */}
-            <Col lg={12}>
-              <p className='font-extrabold text-sm mb-1'> Followed by</p>
-              <Row>
-                <Col lg={2}>
-                  <Select instanceId='u1' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
-                </Col>
-                <Col lg={2}>
-                  <Select instanceId='u2' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
-                </Col>
-                <Col lg={2}>
-                  <Select instanceId='u3' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
-                </Col>
-                <Col lg={2}>
-                  <Select instanceId='u4' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
-                </Col>
-                <Col lg={2}>
-                  <Select instanceId='u5' defaultValue={selectedOption} onChange={setSelectedOption} options={options} />
-                </Col>
-              </Row>
+            <Col lg={6}>
+              <FormItem label='FollowedBy' error={errors?.followedby}>
+                <Controller
+                  name='followedby'
+                  control={control}
+                  render={({ field }) => (
+                    <Select
+                      instanceId='followedby'
+                      {...field}
+                      closeMenuOnSelect={false}
+                      components={animatedComponents}
+                      // defaultValue={[colourOptions[4], colourOptions[5]]}
+                      isMulti
+                      options={options}
+                    />
+                  )}
+                  {...register('followedby')}
+                />
+              </FormItem>
+            </Col>
+            <Col lg={6}>
+              <FormItem label='FollowedByFit' error={errors?.followedbyfit}>
+                <Controller
+                  name='followedbyfit'
+                  control={control}
+                  render={({ field }) => (
+                    <Select
+                      instanceId='followedbyfit'
+                      {...field}
+                      closeMenuOnSelect={false}
+                      components={animatedComponents}
+                      // defaultValue={[colourOptions[4], colourOptions[5]]}
+                      isMulti
+                      options={options}
+                    />
+                  )}
+                  {...register('followedbyfit')}
+                />
+              </FormItem>
             </Col>
           </Row>
         </Card>
