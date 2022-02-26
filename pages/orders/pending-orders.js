@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page'
 
 const PendingOrders = () => {
   return (
-    <Page title={"Pending Orders"} >
+    <Page title={"Pending Orders"} header={"Pending Orders"} >
     Pending Orders
   </Page>
   )

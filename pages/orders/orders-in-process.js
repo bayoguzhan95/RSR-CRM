@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page'
 
 const OrdersInProcess = () => {
   return (
-    <Page title={"Orders-In-Process"} >
+    <Page title={"Orders-In-Process"} header={"Orders-In-Process"} >
       Test
     </Page>
   )

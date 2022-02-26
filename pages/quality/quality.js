@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page';
 
 const Quality = () => {
   return (
-    <Page title="Quality">
+    <Page title="Quality" header={"Quality"} >
       <div>Quality</div>
     </Page>
   );

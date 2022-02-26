@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page';
 
 const GeneralSettings = () => {
   return (
-    <Page title="GeneralSettings">
+    <Page title="GeneralSettings" header={"GeneralSettings"} >
       <div>GeneralSettings</div>
     </Page>
   );

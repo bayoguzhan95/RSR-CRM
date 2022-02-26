@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page'
 
 const ShippedOrders = () => {
   return (
-    <Page title={"Shipped Orders"} >
+    <Page title={"Shipped Orders"}  header={"Shipped Orders"}>
     Shipped Orders
   </Page>
   )

@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page'
 
 const DeleteOrders = () => {
   return (
-    <Page title={"Delete Orders"} >
+    <Page title={"Delete Orders"} header={"Delete Orders"} >
     Delete Ordersss
   </Page>
   )

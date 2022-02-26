@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page'
 
 const FinanceReports = () => {
   return (
-    <Page title={"Reports"} >
+    <Page title={"Reports"} header={"Reports"} >
     Reports
   </Page>
   )

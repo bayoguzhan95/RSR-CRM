@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Employees = () => {
   return (
-    <Page title='Employees'>
+    <Page title='Employees' header={"Employees"} >
       <div className='mb-4'>
         <Link href='/employees/create'>
           <a className='bg-[#DA0A10] hover:bg-[#f80810] text-white font-bold py-2 px-4 rounded mb-4 hover:text-white'>

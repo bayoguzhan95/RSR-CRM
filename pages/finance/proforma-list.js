@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page'
 
 const ProformaList = () => {
   return (
-    <Page title={"Proforma List"} >
+    <Page title={"Proforma List"} header={"Proforma List"} >
     Proforma List
   </Page>
   )

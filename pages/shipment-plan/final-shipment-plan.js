@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page';
 
 const FinalShipmentPlan = () => {
   return (
-    <Page title="FinalShipmentPlan">
+    <Page title="FinalShipmentPlan" header={"Final Shipment Plan"}>
       <div>FinalShipmentPlan</div>
     </Page>
   );

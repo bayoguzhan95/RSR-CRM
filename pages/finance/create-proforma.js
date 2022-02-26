@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page'
 
 const CreateProforma = () => {
   return (
-    <Page title={"Create Proforma"} >
+    <Page title={"Create Proforma"} header={"Create Proforma"} >
     Create Proforma
   </Page>
   )

@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page'
 
 const BankAccount = () => {
   return (
-    <Page title={"Bank Account"} >
+    <Page title={"Bank Account"} header={"Bank Account"} >
     Bank Account
   </Page>
   )

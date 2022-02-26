@@ -3,7 +3,7 @@ import Page from '../../components/layout/Page';
 
 const Exporters = () => {
   return (
-    <Page title="Exporters">
+    <Page title="Exporters" header={"Exporters"} >
       <div>Exporters</div>
     </Page>
   );
