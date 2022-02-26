@@ -459,3 +459,10 @@ export const fabriccode = [
   { label: 'GRS', value: 4 },
   { label: 'BCI', value: 5 },
 ];
+
+export const authTypes = [
+  { label: 'Görüntüleme', value: 1 },
+  { label: 'Tam Yetki', value: 2 },
+  { label: 'Edit Yetkisi', value: 3 },
+
+]

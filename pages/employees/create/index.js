@@ -6,7 +6,7 @@ import Page from '../../../components/layout/Page';
 import React, { useState } from 'react';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import { employeeAuths, userDepartment, userStatus } from '../../../constant/constant';
+import { authTypes, currency, employeeAuths, userDepartment, userStatus } from '../../../constant/constant';
 import { useForm, Controller } from 'react-hook-form';
 import { Divider } from 'antd';
 import axios from 'axios';
@@ -27,6 +27,7 @@ const CreateEmployee = () => {
     formState: { errors },
     control,
     watch,
+    setValue,
   } = useForm();
 
   const onSubmit = async (formData) => {
@@ -53,7 +54,7 @@ const CreateEmployee = () => {
       quality,
       employees,
       settings,
-      shipmentplan
+      shipmentplan,
     } = formData;
 
     const { data } = await axios.post(`/api/register`, {
@@ -78,7 +79,7 @@ const CreateEmployee = () => {
       quality,
       employees,
       settings,
-      shipmentplan
+      shipmentplan,
     });
   };
 
@@ -226,29 +227,35 @@ const CreateEmployee = () => {
           {employeeAuths.map((item, i) => (
             <div className='' key={i}>
               <h1 className='my-4'> {item.menuItem} </h1>
-              {item.subMenu.map((res, i) => (
-                <Row key={i}>
+              {item.subMenu.map((res, index) => (
+
+                <Row key={index}>
                   <Col xs={3}>
-                    <label key={i} className=' cursor-pointer  '>
+                    <label key={index} className=' cursor-pointer  '>
                       <input
                         className=' text-indigo-500 w-4 h-4 mr-2 focus:ring-indigo-400 focus:ring-opacity-25 border border-gray-300 rounded'
-                        name='page'
                         type='checkbox'
-                        value={res.value}
-                        {...register(`${item.menuItemToHookForm}[${i}].${res.value}`)}
+                        name='AuthPages'
+                        {...register(`${item.menuItemToHookForm}.${res.value}.page`)}
                       />
                       <span>{res.item} </span>
                     </label>
                   </Col>
-
                   <Col xs={4}>
                     <label className='cursor-pointer'>
-                      <input
-                        type='checkbox'
-                        className=' text-indigo-500 w-4 h-4 mr-2 focus:ring-indigo-400 focus:ring-opacity-25 border border-gray-300 rounded'
-                        {...register(`${item.menuItemToHookForm}.[${i}].pages`)}
+                      <Controller
+                        control={control}
+                        {...register(`${item.menuItemToHookForm}.${res.value}.auth`, {  value: 1 })}
+                        render={({ field }) => (
+                          <Select
+                            {...field}
+                            instanceId='fullyAuth'
+                            name='auths'
+                            options={authTypes}
+                         
+                          />
+                        )}
                       />
-                      <span>Tam Yetki</span>
                     </label>
                   </Col>
                 </Row>
