@@ -2,9 +2,9 @@ import { Col, Row } from 'react-grid-system';
 import { useForm, Controller } from 'react-hook-form';
 import Select from 'react-select';
 
-import Card from '../antdform/card/card';
-import Input from '../antdform/input/input';
-import FormItem from '../antdform/form-item/FormItem';
+import Card from '../custom-components/card/card';
+import Input from '../custom-components/input/input';
+import FormItem from '../custom-components/form-item/FormItem';
 import { clients, composition, currency, departments, fabriccode, paymentTerm, seasons } from '../../constant/constant';
 import { DatePicker, Divider, Space } from 'antd';
 import { Checkbox } from 'antd';

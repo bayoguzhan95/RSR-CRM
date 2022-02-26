@@ -7,7 +7,7 @@ export default function CreatePo() {
   };
 
   return (
-    <Page title={'Create User'} header={"Create User"} >
+    <Page title={'Create PO'} header={"Create PO"} >
       <CreatePoForm onSubmit={onSubmit} />
     </Page>
   );

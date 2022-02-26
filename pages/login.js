@@ -1,9 +1,9 @@
 import { Button, Divider } from 'antd';
 import { useRouter } from 'next/router';
 import { Col, Row } from 'react-grid-system';
-import Card from '../components/antdform/card/card';
-import FormItem from '../components/antdform/form-item/FormItem';
-import Input from '../components/antdform/input/Input';
+import Card from '../components/custom-components/card/card';
+import FormItem from '../components/custom-components/form-item/FormItem';
+import Input from '../components/custom-components/input/Input';
 import { useForm } from 'react-hook-form';
 import { useContext, useEffect } from 'react';
 import axios from 'axios';
