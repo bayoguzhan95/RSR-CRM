@@ -142,6 +142,10 @@ export const sidebarItems = [
 
     subNav: [
       {
+        title: 'Create Companies',
+        to: '/companies/create-companies',
+      },
+      {
         title: 'Suppliers',
         to: '/companies/suppliers',
       },
