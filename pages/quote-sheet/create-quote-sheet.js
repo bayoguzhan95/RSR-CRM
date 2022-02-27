@@ -1,11 +1,16 @@
-import Page from "../../components/layout/Page"
+import CreateQuoteSheetForm from '../../components/forms/CreateQuoteSheetForm';
+import Page from '../../components/layout/Page';
 
 const CreateQuoteSheet = () => {
-    return (
-        <Page title={" Create quote sheet"} header={" Create quote sheet"} >
-            Create quote sheet
-       </Page>
-    )
-}
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
-export default CreateQuoteSheet
+  return (
+    <Page title={' Create quote sheet'} header={' Create quote sheet'}>
+      <CreateQuoteSheetForm onSubmit={onSubmit} />
+    </Page>
+  );
+};
+
+export default CreateQuoteSheet;
