@@ -3,11 +3,11 @@ import { useRouter } from 'next/router';
 import { Col, Row } from 'react-grid-system';
 import Card from '../components/custom-components/card/card';
 import FormItem from '../components/custom-components/form-item/FormItem';
-import Input from '../components/custom-components/input/Input';
 import { useForm } from 'react-hook-form';
 import { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { Context } from '../context';
+import Input from '../components/custom-components/input';
 const Login = () => {
   // router
   const router = useRouter();
