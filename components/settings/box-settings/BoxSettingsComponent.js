@@ -3,33 +3,83 @@ import { Col, Row } from 'react-grid-system';
 import FormItem from '../../custom-components/form-item/FormItem';
 import Input from '../../custom-components/input';
 
-const CountriesComponent = () => {
+const BoxSettingsComponent = () => {
   const [data, setData] = useState([]);
-  const [countriesInput, setCountriesInput] = useState('');
-
-  const createCountries = async () => {};
+  const createBox = async () => {};
 
   return (
     <>
       <div className='px-6'>
         <Row gutterWidth={16}>
-          <Col lg={6}>
-            <FormItem label='Countries'>
+          <Col lg={2}>
+            <FormItem label='L'>
               <Input
                 autoComplete='off'
-                placeholder='Enter a countries'
-                id='countries'
-                name='countries'
-                type='text'
-                value={countriesInput}
-                onChange={(e) => setCountriesInput(e.target.value)}
+                placeholder='L'
+                id='l'
+                name='l'
+                type='number'
+                // value={certificationInput}
+                // onChange={(e) => setCertificationInput(e.target.value)}
               />
             </FormItem>
           </Col>
-          <Col lg={6}>
+          <Col lg={2}>
+            <FormItem label='W'>
+              <Input
+                autoComplete='off'
+                placeholder='W'
+                id='w'
+                name='w'
+                type='number'
+                // value={certificationInput}
+                // onChange={(e) => setCertificationInput(e.target.value)}
+              />
+            </FormItem>
+          </Col>
+          <Col lg={2}>
+            <FormItem label='H'>
+              <Input
+                autoComplete='off'
+                placeholder='H'
+                id='h'
+                name='h'
+                type='number'
+                // value={certificationInput}
+                // onChange={(e) => setCertificationInput(e.target.value)}
+              />
+            </FormItem>
+          </Col>
+          <Col lg={2}>
+            <FormItem label='Max Weight'>
+              <Input
+                autoComplete='off'
+                placeholder='Max Weight'
+                id='maxweight'
+                name='maxweight'
+                type='text'
+                // value={certificationInput}
+                // onChange={(e) => setCertificationInput(e.target.value)}
+              />
+            </FormItem>
+          </Col>
+          <Col lg={2}>
+            <FormItem label='Tare Weight'>
+              <Input
+                autoComplete='off'
+                placeholder='Tare Weight'
+                id='tareweight'
+                name='tareweight'
+                type='text'
+                // value={certificationInput}
+                // onChange={(e) => setCertificationInput(e.target.value)}
+              />
+            </FormItem>
+          </Col>
+          <Col lg={2}>
             <button
               type='submit'
-              onClick={createCountries}
+              onClick={createBox}
               className=' mt-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'
             >
               Add
@@ -46,7 +96,7 @@ const CountriesComponent = () => {
                 <thead className='bg-gray-50'>
                   <tr>
                     <th scope='col' className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                      Countries
+                      Certifications
                     </th>
 
                     <th scope='col' className='px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider'>
@@ -89,4 +139,4 @@ const CountriesComponent = () => {
   );
 };
 
-export default CountriesComponent;
+export default BoxSettingsComponent;

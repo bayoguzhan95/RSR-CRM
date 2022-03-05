@@ -8,7 +8,7 @@ import CertificatesComponent from '../../components/settings/certificates/Certif
 import CountriesComponent from '../../components/settings/countries/CountriesComponent';
 import PaymentTermComponent from '../../components/settings/payment-term/PaymentTermComponent';
 import SizesComponent from '../../components/settings/sizes/SizesComponent';
-import DefaultSizeComponent from '../../components/settings/default-size/DefaultSizeComponent';
+import DefaultSizeComponent from '../../components/settings/default-size/DefaultSizeComponent'
 
 const { TabPane } = Tabs;
 

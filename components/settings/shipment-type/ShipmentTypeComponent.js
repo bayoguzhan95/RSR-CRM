@@ -43,7 +43,7 @@ const ShipmentTypeComponent = () => {
 
   const remove = (removedShipment) => {
     confirmAlert({
-      title: <div className='border-b '> Confirmation Of Delete </div>,
+      title: <div className='border-b '> Confirmation of Delete </div>,
       childrenElement: () => (
         <div className='text-md font-medium '>
           Are you sure you want to delete <span className='!text-red-500'> {removedShipment} ?</span>
