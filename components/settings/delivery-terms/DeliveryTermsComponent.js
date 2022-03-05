@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Col, Row } from 'react-grid-system';
 import FormItem from '../../custom-components/form-item/FormItem';
-import Input from '../../custom-components/input/Input';
+import Input from '../../custom-components/input';
 
 const DeliveryTermsComponent = () => {
   const [deliveryTermInput, setDeliveryTermInput] = useState('');
@@ -20,6 +20,7 @@ const DeliveryTermsComponent = () => {
                 id='deliveryterms'
                 name='deliveryterms'
                 type='text'
+                value={deliveryTermInput}
                 onChange={(e) => setDeliveryTermInput(e.target.value)}
               />
             </FormItem>

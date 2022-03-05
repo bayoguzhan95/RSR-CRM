@@ -3,12 +3,13 @@ import { useForm, Controller } from 'react-hook-form';
 import Select from 'react-select';
 
 import Card from '../custom-components/card/card';
-import Input from '../custom-components/input/input';
+
 import FormItem from '../custom-components/form-item/FormItem';
 import { clients, composition, currency, departments, fabriccode, paymentTerm, seasons } from '../../constant/constant';
 import { DatePicker, Divider, Space } from 'antd';
 import { Checkbox } from 'antd';
 import { Tabs } from 'antd';
+import Input from '../custom-components/input';
   
   const { TabPane } = Tabs;
 

@@ -2,11 +2,12 @@ import { useForm, Controller } from 'react-hook-form';
 import { Divider } from 'antd';
 import { Col, Row } from 'react-grid-system';
 import FormItem from '../../components/custom-components/form-item/FormItem';
-import Input from '../../components/custom-components/input/input';
+
 import Card from '../../components/custom-components/card/card';
 import { authTypes, currency, employeeAuths, userDepartment, userStatus } from '../../constant/constant';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import Input from '../custom-components/input';
 
 const EmployeeForm = ({ onSubmit }) => {
   const {

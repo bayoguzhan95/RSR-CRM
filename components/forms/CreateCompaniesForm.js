@@ -3,9 +3,11 @@ import { Col, Row } from 'react-grid-system';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 import Card from '../custom-components/card/card';
 import FormItem from '../custom-components/form-item/FormItem';
-import Input from '../custom-components/input/input';
+
 import Select from 'react-select';
 import { paymentTerm } from '../../constant/constant';
+import Input from '../custom-components/input';
+
 
 const CreateCompaniesForm = ({ onSubmit }) => {
   const {

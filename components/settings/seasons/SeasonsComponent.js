@@ -1,62 +1,34 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Col, Row } from 'react-grid-system';
-import { addShipmentType, deleteShipmentType, getAllShipmentType } from '../../../functions/settings';
 import FormItem from '../../custom-components/form-item/FormItem';
 import Input from '../../custom-components/input';
-import { toast } from 'react-toastify';
 
-const ShipmentTypeComponent = () => {
-  const [shipmentType, setShipmentType] = useState('');
-  const [shipmentTypes, setShipmentTypes] = useState([]);
+const SeasonsComponent = () => {
+  const [seasonsInput, setSeasonsInput] = useState('');
 
-  const addShipment = async () => {
-    addShipmentType(shipmentType)
-      .then((res) => {
-        toast(`${res.data.shipmentType} successfuly created`);
-      })
-      .catch((err) => {
-        toast(err.response.data);
-      });
-  };
-
-  useEffect(() => {
-    loadAllShipmentTypes();
-  }, []);
-
-  const loadAllShipmentTypes = async () => {
-    getAllShipmentType().then((res) => setShipmentTypes(res.data));
-  };
-
-  const removeShipment = async (removedShipment) => {
-    console.log(removedShipment);
-
-    deleteShipmentType(removedShipment).then((res) => {
-      console.log(res);
-    });
-  };
+  const addSeasons = async () => {};
 
   return (
     <>
       <div className='px-6'>
         <Row gutterWidth={16}>
           <Col lg={6}>
-            <FormItem label='Shipment Type'>
+            <FormItem label='Seasons'>
               <Input
                 autoComplete='off'
-                placeholder='Enter a name'
-                id='shipmenttype'
-                name='shipmenttype'
+                placeholder='Enter a delivery term'
+                id='seasons'
+                name='seasons'
                 type='text'
-                value={shipmentType}
-                onChange={(e) => setShipmentType(e.target.value)}
+                value={seasonsInput}
+                onChange={(e) => setSeasonsInput(e.target.value)}
               />
             </FormItem>
           </Col>
           <Col lg={6}>
             <button
               type='submit'
-              onClick={addShipment}
+              onClick={addSeasons}
               className=' mt-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'
             >
               Add
@@ -73,7 +45,7 @@ const ShipmentTypeComponent = () => {
                 <thead className='bg-gray-50'>
                   <tr>
                     <th scope='col' className='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
-                      Shipment Types
+                      Seasons
                     </th>
 
                     <th scope='col' className='px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider'>
@@ -82,7 +54,7 @@ const ShipmentTypeComponent = () => {
                   </tr>
                 </thead>
                 <tbody className='bg-white divide-y divide-gray-200 w-1/2'>
-                  {shipmentTypes &&
+                  {/* {shipmentTypes &&
                     shipmentTypes.map((ship, i) => (
                       <tr key={i}>
                         <td className='px-6 py-4 whitespace-nowrap'>
@@ -96,16 +68,12 @@ const ShipmentTypeComponent = () => {
                           <a className='text-indigo-600 mr-4 hover:text-indigo-900 hover:underline'>Edit</a>
 
                           <span> I</span>
-                          <a
-                            onClick={() => removeShipment(ship?.shipmentType)}
-                            href='#'
-                            className='text-indigo-600 ml-4 hover:text-indigo-900 hover:underline'
-                          >
+                          <a href='#' className='text-indigo-600 ml-4 hover:text-indigo-900 hover:underline'>
                             Delete
                           </a>
                         </td>
                       </tr>
-                    ))}
+                    ))} */}
                 </tbody>
               </table>
             </div>
@@ -116,4 +84,4 @@ const ShipmentTypeComponent = () => {
   );
 };
 
-export default ShipmentTypeComponent;
+export default SeasonsComponent;
