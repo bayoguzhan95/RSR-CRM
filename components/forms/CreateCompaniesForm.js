@@ -154,6 +154,30 @@ const CreateCompaniesForm = ({ onSubmit }) => {
               />
             </FormItem>
           </Col>
+          <Col lg={6}>
+            <FormItem label='Eori Number' error={errors?.eorinumber}>
+              <Input
+                autoComplete='off'
+                placeholder='Enter a Eori Number'
+                id='eorinumber'
+                name='eorinumber'
+                type='text'
+                {...register('eorinumber', { required: 'required field' })}
+              />
+            </FormItem>
+          </Col>
+          <Col lg={6}>
+            <FormItem label='LC Number' error={errors?.lcnumber}>
+              <Input
+                autoComplete='off'
+                placeholder='Enter a LC Number'
+                id='lcnumber'
+                name='lcnumber'
+                type='text'
+                {...register('lcnumber', { required: 'required field' })}
+              />
+            </FormItem>
+          </Col>
         </Row>
       </Card>
     </form>
