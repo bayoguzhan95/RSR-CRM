@@ -8,6 +8,7 @@ import CertificatesComponent from '../../components/settings/certificates/Certif
 import CountriesComponent from '../../components/settings/countries/CountriesComponent';
 import PaymentTermComponent from '../../components/settings/payment-term/PaymentTermComponent';
 import SizesComponent from '../../components/settings/sizes/SizesComponent';
+import DefaultSizeComponent from '../../components/settings/default-size/DefaultSizeComponent';
 
 const { TabPane } = Tabs;
 
@@ -42,7 +43,9 @@ const Descriptions = () => {
         <TabPane tab='Shipment Type' key='7'>
           <ShipmentTypeComponent />
         </TabPane>
-        <TabPane tab='Default Sizes' key='8'></TabPane>
+        <TabPane tab='Default Sizes' key='8'>
+          <DefaultSizeComponent />
+        </TabPane>
       </Tabs>
     </Page>
   );

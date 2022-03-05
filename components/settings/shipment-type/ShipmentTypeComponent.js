@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { confirmAlert } from 'react-confirm-alert';
 import { useEffect, useState } from 'react';
 import { Col, Row } from 'react-grid-system';
 import { addShipmentType, deleteShipmentType, getAllShipmentType } from '../../../functions/settings';
@@ -10,16 +10,6 @@ const ShipmentTypeComponent = () => {
   const [shipmentType, setShipmentType] = useState('');
   const [shipmentTypes, setShipmentTypes] = useState([]);
 
-  const addShipment = async () => {
-    addShipmentType(shipmentType)
-      .then((res) => {
-        toast(`${res.data.shipmentType} successfuly created`);
-      })
-      .catch((err) => {
-        toast(err.response.data);
-      });
-  };
-
   useEffect(() => {
     loadAllShipmentTypes();
   }, []);
@@ -29,10 +19,44 @@ const ShipmentTypeComponent = () => {
   };
 
   const removeShipment = async (removedShipment) => {
-    console.log(removedShipment);
+    deleteShipmentType(removedShipment)
+      .then((res) => {
+        toast(`${res.data.shipmentType} succesfully deleted.`);
+        loadAllShipmentTypes();
+      })
+      .catch((err) => {
+        toast(err);
+      });
+  };
+  const addShipment = async () => {
+    addShipmentType(shipmentType)
+      .then((res) => {
+        loadAllShipmentTypes();
+        toast(`${res.data.shipmentType} successfuly created`);
+        setShipmentType('');
+      })
+      .catch((err) => {
+        toast(err.response.data);
+        setShipmentType('');
+      });
+  };
 
-    deleteShipmentType(removedShipment).then((res) => {
-      console.log(res);
+  const remove = (removedShipment) => {
+    confirmAlert({
+      title: <div className='border-b '> Confirmation Of Delete </div>,
+      childrenElement: () => (
+        <div className='text-md font-medium '>
+          Are you sure you want to delete <span className='!text-red-500'> {removedShipment} ?</span>
+        </div>
+      ),
+      buttons: [
+        { label: 'Cancel', onClick: () => {} },
+        {
+          label: 'Yes, Delete',
+          onClick: () => removeShipment(removedShipment),
+          className: '!bg-[#ffd100] !text-black',
+        },
+      ],
     });
   };
 
@@ -97,7 +121,7 @@ const ShipmentTypeComponent = () => {
 
                           <span> I</span>
                           <a
-                            onClick={() => removeShipment(ship?.shipmentType)}
+                            onClick={() => remove(ship?.shipmentType)}
                             href='#'
                             className='text-indigo-600 ml-4 hover:text-indigo-900 hover:underline'
                           >

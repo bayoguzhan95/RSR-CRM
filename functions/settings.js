@@ -7,7 +7,4 @@ export const addShipmentType = async (shipmentType) =>
     shipmentType,
   });
 
-export const deleteShipmentType = async (removedShipment) =>
-  await axios.delete(`/api/deleteShipmentType`, {
-    removedShipment,
-  });
+export const deleteShipmentType = async (slug) => await axios.put(`/api/deleteShipmentType/${slug}`);
