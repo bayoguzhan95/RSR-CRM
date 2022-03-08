@@ -7,7 +7,7 @@ import Input from '../../custom-components/input';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 import { AiOutlineClose, AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
-import { Table, Tag, Space } from 'antd';
+import { Table, Space } from 'antd';
 import { useForm } from 'react-hook-form';
 
 const customStyles = {
@@ -23,18 +23,16 @@ const customStyles = {
 };
 
 const ShipmentTypeComponent = () => {
-  const [shipmentType, setShipmentType] = useState('');
   const [shipmentTypes, setShipmentTypes] = useState([]);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [selectedShip, setSelectedShip] = useState('');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedEditInputValue, setSelectedEditInputValue] = useState('');
   const [inputValue, setInputValue] = useState('');
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-    control,
-    watch,
+    reset,
   } = useForm();
 
   // Get all Shipment Types
@@ -42,19 +40,18 @@ const ShipmentTypeComponent = () => {
     loadAllShipmentTypes();
   }, []);
 
-  const loadAllShipmentTypes = async () => {
-    getAllShipmentType().then((res) => setShipmentTypes(res.data));
-  };
-  const addShipment = async () => {
-    addShipmentType(shipmentType)
+  const loadAllShipmentTypes = async () => getAllShipmentType().then((res) => setShipmentTypes(res.data));
+
+  const addShipment = async (data) => {
+    addShipmentType(data?.shipmenttype)
       .then((res) => {
         loadAllShipmentTypes();
         toast(`${res.data.shipmentType} successfuly created`);
-        setShipmentType('');
+        reset();
       })
       .catch((err) => {
         toast(err.response.data);
-        setShipmentType('');
+        reset();
       });
   };
 
@@ -71,10 +68,10 @@ const ShipmentTypeComponent = () => {
 
   const removeConfirmation = (removedShipment) => {
     confirmAlert({
-      title: <div className='border-b '> Confirmation of Delete </div>,
+      title: <div className="border-b "> Confirmation of Delete </div>,
       childrenElement: () => (
-        <div className='text-md font-medium '>
-          Are you sure you want to delete <span className='!text-red-500'> {removedShipment} ?</span>
+        <div className="text-md font-medium ">
+          Are you sure you want to delete <span className="!text-red-500"> {removedShipment} ?</span>
         </div>
       ),
       buttons: [
@@ -89,12 +86,12 @@ const ShipmentTypeComponent = () => {
   };
 
   const updateShip = async () => {
-    setIsOpen(false);
-    updateShipmentType(selectedShip, {
+    setModalIsOpen(false);
+    updateShipmentType(selectedEditInputValue, {
       shipmentType: inputValue,
     })
       .then((res) => {
-        toast(`${res.data.shipmentType} succesfully updated.`);
+        toast(`${selectedEditInputValue} succesfully updated with ${res.data.shipmentType}`);
         loadAllShipmentTypes();
       })
       .catch((err) => {
@@ -103,9 +100,9 @@ const ShipmentTypeComponent = () => {
   };
 
   const handleEdit = (selected) => {
-    setIsOpen(true);
+    setModalIsOpen(true);
     setInputValue(selected);
-    setSelectedShip(selected);
+    setSelectedEditInputValue(selected);
   };
 
   const columns = [
@@ -120,13 +117,13 @@ const ShipmentTypeComponent = () => {
       title: 'Action',
       key: 'action',
       render: (selected) => (
-        <Space size='middle'>
-          <div className='cursor-pointer'>
-            <AiOutlineEdit onClick={() => handleEdit(selected?.shipmentType)} size={17} className='text-green-500' />
+        <Space size="middle">
+          <div className="cursor-pointer">
+            <AiOutlineEdit onClick={() => handleEdit(selected?.shipmentType)} size={17} className="text-green-500" />
           </div>
           <div>I</div>
-          <div className='cursor-pointer'>
-            <AiOutlineDelete onClick={() => removeConfirmation(selected?.shipmentType)} size={17} className='text-red-500' />
+          <div className="cursor-pointer">
+            <AiOutlineDelete onClick={() => removeConfirmation(selected?.shipmentType)} size={17} className="text-red-500" />
           </div>
         </Space>
       ),
@@ -135,72 +132,69 @@ const ShipmentTypeComponent = () => {
 
   return (
     <>
-      <div className='px-6'>
-        <Row gutterWidth={16}>
-          <Col lg={6}>
-            <FormItem label='Shipment Type'>
-              <Input
-                autoComplete='off'
-                placeholder='Enter a name'
-                id='shipmenttype'
-                name='shipmenttype'
-                type='text'
-                value={shipmentType}
-                onChange={(e) => setShipmentType(e.target.value)}
-                {...register('shipmenttype', { required: 'required field' })}
-              />
-            </FormItem>
-          </Col>
-          <Col lg={6}>
-            <button
-              type='submit'
-              onClick={addShipment}
-              className=' mt-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'
-            >
-              Add
-            </button>
-          </Col>
-        </Row>
+      <div className="px-6">
+        <form onSubmit={handleSubmit(addShipment)}>
+          <Row gutterWidth={16}>
+            <Col lg={6}>
+              <FormItem label="Shipment Type" error={errors?.shipmenttype}>
+                <Input
+                  autoComplete="off"
+                  placeholder="Enter a shipment Type"
+                  id="shipmenttype"
+                  name="shipmenttype"
+                  type="text"
+                  {...register('shipmenttype', { required: ' required field' })}
+                />
+              </FormItem>
+            </Col>
+            <Col lg={6}>
+              <button className=" mt-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                Add
+              </button>
+            </Col>
+          </Row>
+        </form>
       </div>
       <Table columns={columns} dataSource={shipmentTypes} />
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setIsOpen(false)}
+        onRequestClose={() => setModalIsOpen(false)}
         style={customStyles}
-        contentLabel='Example Modal'
+        contentLabel="Example Modal"
         ariaHideApp={false}
       >
-        <Row>
-          <div className='!flex !justify-between border-b w-full mb-4 pb-4'>
-            <div className=''>Update Shipment Type</div>
-            <div onClick={() => setIsOpen(false)}>
-              <AiOutlineClose size={20} className='text-red-600 cursor-pointer' />{' '}
+        <form onSubmit={updateShip}>
+          <Row>
+            <div className="!flex !justify-between border-b w-full mb-4 pb-4">
+              <div className="">Update Shipment Type</div>
+              <div onClick={() => setModalIsOpen(false)}>
+                <AiOutlineClose size={20} className="text-red-600 cursor-pointer" />{' '}
+              </div>
             </div>
-          </div>
-
-          <Col md={8} lg={8}>
-            <FormItem label='Shipment Type'>
-              <Input
-                autoComplete='off'
-                placeholder='Enter a name'
-                id='name'
-                name='name'
-                type='text'
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-              />
-            </FormItem>
-          </Col>
-          <Col md={3} lg={4}>
-            <button
-              type='submit'
-              onClick={updateShip}
-              className=' mt-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'
-            >
-              Update
-            </button>
-          </Col>
-        </Row>
+            <Col md={8} lg={8}>
+              <FormItem label="Shipment Type">
+                <Input
+                  required
+                  autoComplete="off"
+                  placeholder="Enter a name"
+                  id="name"
+                  name="name"
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                />
+              </FormItem>
+            </Col>
+            <Col md={3} lg={4}>
+              <button
+                type="submit"
+                className=" mt-5 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+              >
+                Update
+              </button>
+            </Col>
+          </Row>
+        </form>
       </Modal>
     </>
   );
