@@ -1,6 +1,6 @@
 import Page from '../../components/layout/Page';
 import { useRouter } from 'next/router'
-
+//
 const UsersEdit = () => {
     const router = useRouter()
     console.log(router.query.id);
