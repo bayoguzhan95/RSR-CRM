@@ -9,18 +9,7 @@ import Modal from 'react-modal';
 import { AiOutlineClose, AiOutlineEdit, AiOutlineDelete } from 'react-icons/ai';
 import { Table, Space } from 'antd';
 import { useForm } from 'react-hook-form';
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: '500px',
-  },
-};
+import { customStyle } from '../../../constant/tableCustomStyle';
 
 const ShipmentTypeComponent = () => {
   const [shipmentTypes, setShipmentTypes] = useState([]);
@@ -159,7 +148,7 @@ const ShipmentTypeComponent = () => {
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
-        style={customStyles}
+        style={customStyle}
         contentLabel="Example Modal"
         ariaHideApp={false}
       >
