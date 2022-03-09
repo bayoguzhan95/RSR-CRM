@@ -127,7 +127,7 @@ const SeasonsComponent = ({ getAll }) => {
         <form onSubmit={handleSubmit(handleAddSeason)}>
           <Row gutterWidth={16}>
             <Col lg={6}>
-              <FormItem label="Season" error={errors?.shipmenttype}>
+              <FormItem label="Season" error={errors?.season}>
                 <Input
                   autoComplete="off"
                   placeholder="Enter a season"
