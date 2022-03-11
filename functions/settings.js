@@ -64,3 +64,14 @@ export const addDeliveryTerm = async (deliveryTerm) =>
 export const deleteDeliveryTerm = async (slug) => await axios.delete(`/api/deleteDeliveryTerm/${slug}`);
 
 export const updateDeliveryTerm = async (slug, deliveryTerm) => await axios.put(`/api/updateDeliveryTerm/${slug}`, deliveryTerm);
+
+// BOX-SETTINGS
+
+export const getAllBoxes = async () => await axios.get('/api/getAllBoxes');
+
+export const addBox = async (box) =>
+  await axios.post(`/api/addBox`, {
+    box,
+  });
+
+export const deleteBox = async (slug) => await axios.delete(`/api/deleteBox/${slug}`);
