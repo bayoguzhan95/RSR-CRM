@@ -5,6 +5,9 @@ import FormItem from '../../custom-components/form-item/FormItem';
 import Input from '../../custom-components/input';
 import { Table, Space } from 'antd';
 import { addBox, deleteBox, getAllBoxes } from '../../../functions/settings';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { confirmAlert } from 'react-confirm-alert';
+import { toast } from 'react-toastify';
 
 const BoxSettingsComponent = () => {
   const [data, setData] = useState([]);
@@ -23,10 +26,10 @@ const BoxSettingsComponent = () => {
   const fetchAllData = async () => getAllBoxes().then((res) => setData(res.data));
 
   const handleAddBox = async (data) => {
-    addBox(data?.boxes)
-      .then((res) => {
+    addBox(data)
+      .then(() => {
         fetchAllData();
-        toast(`${res.data.boxes} successfuly created`);
+        toast(`successfuly created`);
         reset();
       })
       .catch((err) => {
@@ -37,8 +40,8 @@ const BoxSettingsComponent = () => {
 
   const handleRemoveBox = async (removedBox) => {
     deleteBox(removedBox)
-      .then((res) => {
-        toast(`${res.data.certification} succesfully deleted.`);
+      .then(() => {
+        toast(` succesfully deleted.`);
         fetchAllData();
       })
       .catch((err) => {
@@ -49,11 +52,7 @@ const BoxSettingsComponent = () => {
   const removeConfirmation = (removedBox) => {
     confirmAlert({
       title: <div className='border-b '> Confirmation of Delete </div>,
-      childrenElement: () => (
-        <div className='text-md font-medium '>
-          Are you sure you want to delete <span className='!text-red-500'> {removedBox} ?</span>
-        </div>
-      ),
+      childrenElement: () => <div className='text-md font-medium '>Are you sure you want to delete ?</div>,
       buttons: [
         { label: 'Cancel', onClick: () => {} },
         {
@@ -65,11 +64,37 @@ const BoxSettingsComponent = () => {
     });
   };
 
+  console.log(data);
+
   const columns = [
     {
-      title: 'Certifications',
-      dataIndex: 'certification',
-      key: 'certification',
+      title: 'Lenght',
+      dataIndex: 'length',
+      key: 'length',
+      render: (text) => <h6>{text}</h6>,
+    },
+    {
+      title: 'Height',
+      dataIndex: 'height',
+      key: 'height',
+      render: (text) => <h6>{text}</h6>,
+    },
+    {
+      title: 'Width',
+      dataIndex: 'width',
+      key: 'width',
+      render: (text) => <h6>{text}</h6>,
+    },
+    {
+      title: 'Max Weight',
+      dataIndex: 'maxWeight',
+      key: 'maxWeight',
+      render: (text) => <h6>{text}</h6>,
+    },
+    {
+      title: 'Tare Weight',
+      dataIndex: 'tareWeight',
+      key: 'tareWeight',
       render: (text) => <h6>{text}</h6>,
     },
 
@@ -79,11 +104,7 @@ const BoxSettingsComponent = () => {
       render: (selected) => (
         <Space size='middle'>
           <div className='cursor-pointer'>
-            <AiOutlineEdit onClick={() => handleEdit(selected?.certification)} size={17} className='text-green-500' />
-          </div>
-          <div>I</div>
-          <div className='cursor-pointer'>
-            <AiOutlineDelete onClick={() => removeConfirmation(selected?.certification)} size={17} className='text-red-500' />
+            <AiOutlineDelete onClick={() => removeConfirmation(selected?._id)} size={17} className='text-red-500' />
           </div>
         </Space>
       ),
@@ -96,7 +117,7 @@ const BoxSettingsComponent = () => {
         <form onSubmit={handleSubmit(handleAddBox)}>
           <Row gutterWidth={16}>
             <Col lg={2}>
-              <FormItem label='L'>
+              <FormItem label='L' error={errors?.l}>
                 <Input
                   autoComplete='off'
                   placeholder='L'
@@ -108,7 +129,7 @@ const BoxSettingsComponent = () => {
               </FormItem>
             </Col>
             <Col lg={2}>
-              <FormItem label='W'>
+              <FormItem label='W' error={errors?.w}>
                 <Input
                   autoComplete='off'
                   placeholder='W'
@@ -120,7 +141,7 @@ const BoxSettingsComponent = () => {
               </FormItem>
             </Col>
             <Col lg={2}>
-              <FormItem label='H'>
+              <FormItem label='H' error={errors?.h}>
                 <Input
                   autoComplete='off'
                   placeholder='H'
@@ -132,7 +153,7 @@ const BoxSettingsComponent = () => {
               </FormItem>
             </Col>
             <Col lg={2}>
-              <FormItem label='Max Weight'>
+              <FormItem label='Max Weight' error={errors?.maxweight}>
                 <Input
                   autoComplete='off'
                   placeholder='Max Weight'
@@ -144,7 +165,7 @@ const BoxSettingsComponent = () => {
               </FormItem>
             </Col>
             <Col lg={2}>
-              <FormItem label='Tare Weight'>
+              <FormItem label='Tare Weight' error={errors?.tareweight}>
                 <Input
                   autoComplete='off'
                   placeholder='Tare Weight'
@@ -163,7 +184,6 @@ const BoxSettingsComponent = () => {
           </Row>
         </form>
       </div>
-
       <Table columns={columns} dataSource={data} />
     </>
   );
