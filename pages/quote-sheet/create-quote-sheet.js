@@ -1,9 +1,12 @@
 import CreateQuoteSheetForm from '../../components/forms/CreateQuoteSheetForm';
 import Page from '../../components/layout/Page';
+import { createQuoteSheetApi } from '../../functions/quote-sheet';
 
 const CreateQuoteSheet = () => {
   const onSubmit = (data) => {
-    console.log(data);
+    createQuoteSheetApi(data)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
